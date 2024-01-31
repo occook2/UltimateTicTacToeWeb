@@ -1,0 +1,26 @@
+.board {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .board .board-row {
+    display: flex;
+  }
+  
+  /* Remove borders for edge squares */
+  .board .board-row:first-child .square {
+    border-top: none;
+  }
+  
+  .board .board-row:last-child .square {
+    border-bottom: none;
+  }
+  
+  .board .board-row .square:first-child {
+    border-left: none;
+  }
+  
+  .board .board-row .square:last-child {
+    border-right: none;
+  }
+  
