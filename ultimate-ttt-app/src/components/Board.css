@@ -11,6 +11,10 @@
     display: flex;
   }
   
+  .board {
+    height: 100%;
+  }
+  
   /* Remove borders for edge squares */
   .board .board-row:first-child .square {
     border-top: none;
