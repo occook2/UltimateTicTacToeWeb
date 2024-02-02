@@ -32,7 +32,7 @@ function Board() {
   };
 
   return (
-    <div>
+    <div className='board-container'>
       {renderBoard()}
     </div>
   );
