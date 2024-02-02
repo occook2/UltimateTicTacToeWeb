@@ -1,0 +1,33 @@
+.big-board-container {
+    width: 300px;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    padding: 5%;
+  }
+
+  .big-board .big-board-row {
+    height: 33.33%;
+    display: flex;
+  }
+  
+  .big-board {
+    height: 100%;
+  }
+  
+  /* Remove borders for edge squares */
+  .big-board .big-board-row:first-child .board-container {
+    border-top: none;
+  }
+  
+  .big-board .big-board-row:last-child .board-container {
+    border-bottom: none;
+  }
+  
+  .big-board .big-board-row .board-container:first-child {
+    border-left: none;
+  }
+  
+  .big-board .big-board-row .board-container:last-child {
+    border-right: none;
+  }

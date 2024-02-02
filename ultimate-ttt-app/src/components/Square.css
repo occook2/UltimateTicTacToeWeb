@@ -1,7 +1,7 @@
 .square {
     width: 33%;
     background-color: transparent;
-    border: 2px solid black;
+    border: 1px solid black;
     font-size: 24px;
     font-weight: bold;
     display: flex;
@@ -10,8 +10,8 @@
   }
 
   .square-button {
-    width: 80%;
-    height: 80%;
+    width: 85%;
+    height: 85%;
     background-color: transparent;
     border: none;
     cursor: pointer;

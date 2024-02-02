@@ -1,14 +1,13 @@
 .board-container {
-    width: 300px;
-    height: 300px;
-    border: 2px solid red;  
+    width: 33.33%;
+    border: 2px solid black;  
     display: flex;
     flex-direction: column;
-    padding: 5%;
+    padding: 3%;
   }
 
   .board .board-row {
-    height: 33.33%;
+    height: 33.3%;
     display: flex;
   }
   
@@ -16,7 +15,7 @@
     height: 100%;
   }
   
-  /* Remove borders for edge squares */
+  /* Remove borders for edge boards */
   .board .board-row:first-child .square {
     border-top: none;
   }
