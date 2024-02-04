@@ -3,12 +3,12 @@ import './BigBoard.css'; // Import the CSS file
 import Board from './Board';
 
 function BigBoard() {
-    // Helper function to render a single square
+    // Helper function to render a single board    
     const renderBoard = (i) => {
       return <Board key = {i} boardNumber = {i}/>;
     };
   
-    // Helper function to render a row of squares
+    // Helper function to render a row of boards
     const renderRow = (rowIndex) => {
       const boards = [];
       for (let j = 0; j < 3; j++) {
@@ -23,7 +23,7 @@ function BigBoard() {
       );
     };
   
-    // Render the entire board
+    // Render the entire BigBoard
     const renderBigBoard = () => {
       const rows = [];
       for (let i = 0; i < 3; i++) {
