@@ -16,6 +16,10 @@
     border: none;
     cursor: pointer;
   }
+  .square-image {
+    width: 85%;
+    height: auto;
+  }
   
   .square-button:hover {
     background-color: grey;

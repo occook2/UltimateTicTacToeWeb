@@ -5,18 +5,19 @@ import Board from './Board';
 function BigBoard() {
     // Helper function to render a single square
     const renderBoard = (i) => {
-      return <Board />;
+      return <Board key = {i} boardNumber = {i}/>;
     };
   
     // Helper function to render a row of squares
     const renderRow = (rowIndex) => {
       const boards = [];
       for (let j = 0; j < 3; j++) {
-        boards.push(renderBoard(rowIndex * 3 + j));
+        const boardKey = rowIndex * 3 + j;
+        boards.push(renderBoard(boardKey));
       }
       
       return (
-        <div className="big-board-row">
+        <div className="big-board-row" key={rowIndex}>
           {boards}
         </div>
       );
