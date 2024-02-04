@@ -4,9 +4,11 @@ import Square from './Square';
 
 function Board(props) {
   const {boardNumber} = props;
+  const {boardData} = props;
+  
   // Helper function to render a single square
-  const renderSquare = (i) => {
-    return <Square key = {i} address = {i}/>;
+  const renderSquare = (i, val) => {
+    return <Square key = {i} address = {i} value = {val}/>;
   };
 
   // Helper function to render a row of squares
@@ -14,7 +16,8 @@ function Board(props) {
     const squares = [];
     for (let j = 0; j < 3; j++) {
       const squareKey = boardNumber*9 + rowIndex * 3 + j
-      squares.push(renderSquare(squareKey));
+      const squareValue = boardData[rowIndex * 3 + j];
+      squares.push(renderSquare(squareKey, squareValue));
     }
     
     return (

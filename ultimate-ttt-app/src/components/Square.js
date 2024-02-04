@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
 import './Square.css'; // Import the CSS file
 
-function Square(address) {
+function Square(props) {
     const [clicked, setClicked] = useState(false);
+    const {address} = props;
+    const {value} = props;
 
     const handleClick = () => {
         console.log(address)
+        console.log(value)
         setClicked(true);
     };
   

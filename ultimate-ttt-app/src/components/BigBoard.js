@@ -4,16 +4,17 @@ import Board from './Board';
 
 function BigBoard() {
     // Helper function to render a single board    
-    const renderBoard = (i) => {
-      return <Board key = {i} boardNumber = {i}/>;
+    const renderBoard = (i, data) => {
+      return <Board key = {i} boardNumber = {i} boardData = {data}/>;
     };
   
     // Helper function to render a row of boards
     const renderRow = (rowIndex) => {
       const boards = [];
+      const boardData = ["X", "", "O", "", "", "", "O", "", ""] // TODO: Remove Hard Code
       for (let j = 0; j < 3; j++) {
         const boardKey = rowIndex * 3 + j;
-        boards.push(renderBoard(boardKey));
+        boards.push(renderBoard(boardKey, boardData));
       }
       
       return (
