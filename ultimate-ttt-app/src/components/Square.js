@@ -8,14 +8,18 @@ function Square(props) {
 
     const handleClick = () => {
         console.log(address)
-        console.log(value)
         setClicked(true);
     };
-  
+
+    var filled = true
+    if (value === "") {
+        filled = false
+    }
+    
     return (
     <div className='square'>
-        {clicked ? ( 
-        <img src={require('../assets/X.jpg')} className="square-image" alt="" />
+        {filled ? ( 
+        value
       ) : (
         <button className="square-button" onClick={handleClick}>
           {/* Content of each square */}

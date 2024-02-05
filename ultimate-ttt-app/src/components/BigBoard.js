@@ -1,5 +1,6 @@
 import React from 'react';
 import './BigBoard.css'; // Import the CSS file
+import boardState from '../mock-data/boardState.json'
 import Board from './Board';
 
 function BigBoard() {
@@ -11,9 +12,10 @@ function BigBoard() {
     // Helper function to render a row of boards
     const renderRow = (rowIndex) => {
       const boards = [];
-      const boardData = ["X", "", "O", "", "", "", "O", "", ""] // TODO: Remove Hard Code
+       // TODO: Remove Hard Code - Replace with JSON
       for (let j = 0; j < 3; j++) {
         const boardKey = rowIndex * 3 + j;
+        var boardData = boardState.bigBoard[boardKey];
         boards.push(renderBoard(boardKey, boardData));
       }
       
