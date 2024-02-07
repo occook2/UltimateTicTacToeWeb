@@ -35,7 +35,7 @@ function Board({ boardNumber, boardData, boardMove, complete, onSquareClick}) {
 
   if (complete != "") {
     return (
-      <div className='board-container open'>
+      <div className='board-container complete'>
         {complete}
       </div>
     );

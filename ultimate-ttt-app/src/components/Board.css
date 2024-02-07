@@ -4,6 +4,13 @@
     display: flex;
     flex-direction: column;
     padding: 3%;
+    font-size: 70px;
+    font-weight: bold;
+  }
+
+  .complete {
+    align-items: center;
+    justify-content: center;
   }
 
   .closed {
