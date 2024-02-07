@@ -2,13 +2,10 @@ import React from 'react';
 import './Board.css'; // Import the CSS file
 import Square from './Square';
 
-function Board(props) {
-  const {boardNumber} = props;
-  const {boardData} = props;
-  
+function Board({ boardNumber, boardData, boardMove, onSquareClick}) {
   // Helper function to render a single square
   const renderSquare = (i, val) => {
-    return <Square key = {i} address = {i} value = {val}/>;
+    return <Square key = {i} address = {i} value = {val} possibleMove = {boardMove} onSquareClick={onSquareClick}/>;
   };
 
   // Helper function to render a row of squares

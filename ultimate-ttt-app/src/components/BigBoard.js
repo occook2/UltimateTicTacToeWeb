@@ -1,22 +1,35 @@
 import React from 'react';
 import './BigBoard.css'; // Import the CSS file
 import boardState from '../mock-data/boardState.json'
+import emptyBoardState from '../mock-data/emptyBoardState.json'
 import Board from './Board';
 
-function BigBoard() {
+function BigBoard({boardData, onSquareClick }) {
     // Helper function to render a single board    
-    const renderBoard = (i, data) => {
-      return <Board key = {i} boardNumber = {i} boardData = {data}/>;
+    const renderBoard = (i, data, boardMove) => {
+      if (i == boardMove || boardMove == -1) {
+        return <Board key = {i} boardNumber = {i} boardData = {data} boardMove = {true} onSquareClick={handleSquareClick}/>;
+      }
+      else {
+        return <Board key = {i} boardNumber = {i} boardData = {data} boardMove = {false} onSquareClick={handleSquareClick}/>;
+      }
+      
     };
-  
+    
+    const handleSquareClick = (address) => {
+      // Simulate API call to fetch data based on the square address
+      // This function will then update the state of BigBoard to reflect the changes
+      console.log("API call triggered for square address: ", address);
+  };
+
     // Helper function to render a row of boards
     const renderRow = (rowIndex) => {
       const boards = [];
-       // TODO: Remove Hard Code - Replace with JSON
       for (let j = 0; j < 3; j++) {
         const boardKey = rowIndex * 3 + j;
         var boardData = boardState.bigBoard[boardKey];
-        boards.push(renderBoard(boardKey, boardData));
+        var boardMove = boardState.boardMove;
+        boards.push(renderBoard(boardKey, boardData, boardMove));
       }
       
       return (
