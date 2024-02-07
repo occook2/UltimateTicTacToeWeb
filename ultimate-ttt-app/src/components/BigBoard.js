@@ -4,7 +4,7 @@ import boardState from '../mock-data/boardState.json'
 import emptyBoardState from '../mock-data/emptyBoardState.json'
 import Board from './Board';
 
-function BigBoard({boardData, onSquareClick }) {
+function BigBoard() {
     // Helper function to render a single board    
     const renderBoard = (i, data, boardMove) => {
       if (i == boardMove || boardMove == -1) {
