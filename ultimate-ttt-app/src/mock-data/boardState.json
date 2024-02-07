@@ -13,5 +13,5 @@
 
     "boardMove": [2],
 
-    "completeBoards": ["","","","","","","","",""]
+    "completeBoards": ["X","","","","","","O","O","X"]
   }

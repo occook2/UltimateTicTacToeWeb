@@ -6,12 +6,12 @@ import Board from './Board';
 
 function BigBoard() {
     // Helper function to render a single board    
-    const renderBoard = (i, data, boardMove) => {
+    const renderBoard = (i, data, boardMove, complete) => {
       if (i == boardMove || boardMove == -1) {
-        return <Board key = {i} boardNumber = {i} boardData = {data} boardMove = {true} onSquareClick={handleSquareClick}/>;
+        return <Board key = {i} boardNumber = {i} boardData = {data} boardMove = {true} complete = {complete} onSquareClick={handleSquareClick}/>;
       }
       else {
-        return <Board key = {i} boardNumber = {i} boardData = {data} boardMove = {false} onSquareClick={handleSquareClick}/>;
+        return <Board key = {i} boardNumber = {i} boardData = {data} boardMove = {false} complete = {complete} onSquareClick={handleSquareClick}/>;
       }
       
     };
@@ -27,9 +27,10 @@ function BigBoard() {
       const boards = [];
       for (let j = 0; j < 3; j++) {
         const boardKey = rowIndex * 3 + j;
-        var boardData = boardState.bigBoard[boardKey];
-        var boardMove = boardState.boardMove;
-        boards.push(renderBoard(boardKey, boardData, boardMove));
+        boards.push(renderBoard(boardKey, 
+          boardState.bigBoard[boardKey], 
+          boardState.boardMove, 
+          boardState.completeBoards[boardKey]));
       }
       
       return (
