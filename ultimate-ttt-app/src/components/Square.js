@@ -2,12 +2,9 @@ import React, { useState } from 'react';
 import './Square.css'; // Import the CSS file
 
 function Square({ address, value, possibleMove, onSquareClick}) {
-    const [clicked, setClicked] = useState(false);
-
-    const handleClick = () => {
-        setClicked(true);     
+    const handleClick = () => {     
         // Call the onSquareClick function passed from the parent component
-        onSquareClick(address);
+        onSquareClick(address); // Address will be sent to Server. JSON response will go to BigBoard
     };
 
     var filled = true

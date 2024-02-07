@@ -6,6 +6,10 @@
     padding: 3%;
   }
 
+  .closed {
+    background-color: dimgrey;
+  }
+
   .board .board-row {
     height: 33.3%;
     display: flex;

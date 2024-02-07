@@ -33,11 +33,21 @@ function Board({ boardNumber, boardData, boardMove, onSquareClick}) {
     return <div className="board">{rows}</div>;
   };
 
-  return (
-    <div className='board-container'>
-      {renderBoard()}
-    </div>
-  );
+  if (boardMove) {
+    return (
+      <div className='board-container open'>
+        {renderBoard()}
+      </div>
+    );
+  }
+  else {
+    return (
+      <div className='board-container closed'>
+        {renderBoard()}
+      </div>
+    );
+  }
+  
 }
 
 export default Board;
