@@ -7,7 +7,7 @@ import Board from './Board';
 function BigBoard() {
     // Helper function to render a single board    
     const renderBoard = (i, data, boardMove) => {
-      if (i === boardMove || boardMove === -1) {
+      if (i == boardMove || boardMove == -1) {
         return <Board key = {i} boardNumber = {i} boardData = {data} boardMove = {true} onSquareClick={handleSquareClick}/>;
       }
       else {
