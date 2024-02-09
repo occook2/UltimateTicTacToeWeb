@@ -50,7 +50,7 @@ function BigBoard() {
     };
   
     return (
-      <div className='big-board-container'>
+      <div className='big-board-container' data-testid="big-board">
         {renderBigBoard()}
       </div>
     );
