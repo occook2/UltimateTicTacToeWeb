@@ -2,7 +2,8 @@ import React, {useState} from 'react';
 import './BigBoard.css'; // Import the CSS file
 import apiBoardState from '../mock-data/apiBoardState.json'
 import emptyBoardState from '../mock-data/emptyBoardState.json'
-import Board from './Board';
+import Board from './Board'
+import axios from 'axios'
 
 function BigBoard() {
   const [bigBoardState, setBigBoardState] = useState(null)
@@ -22,6 +23,16 @@ function BigBoard() {
     // This function will then update the state of BigBoard to reflect the changes
     console.log("API call triggered for square address: ", address);
     setBigBoardState(apiBoardState)
+
+    // Test API
+    var testData
+    await axios.get('http://localhost:4000/users')
+    .then(res => {
+      testData = res.data
+    })
+    .catch(err => console.log(err))
+    console.log(testData.id)
+
   };
 
     // Helper function to render a row of boards
