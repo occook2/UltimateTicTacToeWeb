@@ -33,6 +33,7 @@ function Board({ boardNumber, boardData, boardMove, complete, onSquareClick}) {
     return <div className="board">{rows}</div>;
   };
 
+  // Determines type of board render based on if it is a possible move, complete, or blocked
   if (complete != "") {
     return (
       <div className='board-container complete'>

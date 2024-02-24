@@ -1,34 +1,38 @@
 import React, {useState, useEffect} from 'react';
 import './BigBoard.css'; // Import the CSS file
-import apiBoardState from '../mock-data/apiBoardState.json'
 import emptyBoardState from '../mock-data/emptyBoardState.json'
 import Board from './Board'
 import axios from 'axios'
 
 function BigBoard() {
+  
+  // ### Code to update BigBoard at start and on Click ###
+  // Sets start to emptyBoardState and tracks state of BigBoard throughout game
   const [bigBoardState, setBigBoardState] = useState(emptyBoardState)
-
+  
+  // Updates rendering of BigBoard everytime the state changes
   useEffect(() => {
-
   }, [bigBoardState]);
   
+  // Sends boardState and move to backeend server and updates state based on response
   const handleSquareClick = async (address) => {
-    // Simulate API call to fetch data based on the square address
-    // This function will then update the state of BigBoard to reflect the changes
+    // Create data for Post Request
     const postData = {
       boardState: bigBoardState,
       nextMoveAddress: address
     };
 
+    // API Post Request
     try {
       const response = await axios.post('http://localhost:4000/move', postData);
-      // Update the bigBoardState based on the response from the server if needed
+      // Update the bigBoardState based on the response from the server
       setBigBoardState(response.data.updatedBoardState);
     } catch (error) {
       console.error(error);
     }
-
   };
+  
+   // ### Helper Functions to Render BigBoard ###
 
    // Helper function to render a single board    
    const renderBoard = (i, data, boardMove, complete) => {
