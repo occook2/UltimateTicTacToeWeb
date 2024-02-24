@@ -10,7 +10,8 @@ router.post('/move', (req, res) => {
     console.log("Next move address:", nextMoveAddress);
 
     // Example response
-    const updatedBoardState = boardState;
+    var updatedBoardState = boardState;
+    updatedBoardState.bigBoard[0][0] = "X";
 
     // Send back the updated board state or any other response
     res.status(200).json({ updatedBoardState });
