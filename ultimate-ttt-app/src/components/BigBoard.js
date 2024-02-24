@@ -9,8 +9,7 @@ function BigBoard() {
   const [bigBoardState, setBigBoardState] = useState(emptyBoardState)
 
   useEffect(() => {
-    // This effect will run when bigBoardState changes
-    console.log("bigBoardState has been updated:", bigBoardState);
+
   }, [bigBoardState]);
   
   const handleSquareClick = async (address) => {
@@ -23,7 +22,6 @@ function BigBoard() {
 
     try {
       const response = await axios.post('http://localhost:4000/move', postData);
-      console.log(response.data);
       // Update the bigBoardState based on the response from the server if needed
       setBigBoardState(response.data.updatedBoardState);
     } catch (error) {
