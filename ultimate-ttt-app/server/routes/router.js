@@ -1,11 +1,19 @@
 const express = require('express')
 const router = express.Router()
 
-router.get('/users', (req, res) => {
-    userData = 
-            {"id" : "Testing API Connection"
-        }
-    res.send(userData)
-})
+router.post('/move', (req, res) => {
+    // Extract data from the request body
+    const { boardState, nextMoveAddress } = req.body;
+
+    // Process the boardState and nextMoveAddress as needed
+    console.log("Received boardState:", boardState);
+    console.log("Next move address:", nextMoveAddress);
+
+    // Example response
+    const updatedBoardState = boardState;
+
+    // Send back the updated board state or any other response
+    res.status(200).json({ updatedBoardState });
+});
 
 module.exports = router
