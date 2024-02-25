@@ -1,11 +1,20 @@
-const boardService = require('../services/boardService');
+const updateBoardService = require('../services/updateBoard');
+const completedBoardService = require('../services/testComplete');
 
 exports.handleMove = async (req, res) => {
     try {
         const { boardState, nextMoveAddress } = req.body;
-        console.log(boardState);
+        
         // Call a service function to update the board state
-        const updatedBoardState = await boardService.updateBoardState(boardState, nextMoveAddress);
+        var updatedBoardState = await updateBoardService.updateBoardState("X", boardState, nextMoveAddress);
+        
+        // Call a service function to test for completed boards
+        updatedBoardState = await completedBoardService.testComplete("X", boardState, nextMoveAddress);
+        // Call a service to create a random bot move
+
+        // Make move board again for O
+
+        // Test complete again for O
 
         // Send back the updated board state in the response
         res.status(200).json({ updatedBoardState });
