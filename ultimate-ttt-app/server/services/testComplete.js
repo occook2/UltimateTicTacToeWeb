@@ -32,8 +32,9 @@ exports.testComplete = async (player, boardState, lastMoveAddress) => {
 
     if (completedBoard) {
         boardState.completeBoards[boardPlayed] = player;
-        console.log(boardState);
-        console.log(boardCheck);
+    }
+    if (!completedBoard && movesMadeInBoard == 9) {
+        boardState.completeBoards[boardPlayed] = "-";
     }
 
     return boardState;
