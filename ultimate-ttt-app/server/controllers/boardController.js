@@ -1,6 +1,7 @@
 const updateBoardService = require('../services/updateBoard');
 const completedBoardService = require('../services/testComplete');
 const nextBoardService = require('../services/nextBoard.js');
+const agentService = require('../agents/randomAgent.js');
 
 exports.handleMove = async (req, res) => {
     try {
@@ -15,7 +16,10 @@ exports.handleMove = async (req, res) => {
         // Determine which board can be played in next
         updatedBoardState = await nextBoardService.setNextBoard(updatedBoardState, nextMoveAddress);
 
-        // Make move board again for O
+        // Select move for random Bot
+        const botMove = await agentService.selectRandomMove(updatedBoardState);
+        console.log(botMove);
+        // Make move for random Bot
 
 
         // Test complete again for O
