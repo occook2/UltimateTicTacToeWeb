@@ -7,13 +7,13 @@ function Square({ address, value, possibleMove, onSquareClick}) {
         onSquareClick(address); // Address will be sent to Server. JSON response will go to BigBoard
     };
 
+    // Determine if the square is filled
     var filled = true
     if (value === "") {
         filled = false
     }
     
-    // TODO: Use if statements to create multiple return statements. One should be filled ("X/O")
-    // Another should be empty, (not filled, not possible), and the last should be a button (not filled, possible)
+    // Determines which squares shoul have buttons
     if (possibleMove && !filled) {
       return (
         <div className='square'>
