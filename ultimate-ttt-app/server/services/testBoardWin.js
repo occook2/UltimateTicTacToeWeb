@@ -1,6 +1,6 @@
 const completedBoardMasks = require('../utils/completedBoardMasks.js');
 
-exports.testComplete = async (player, boardState, lastMoveAddress) => {
+exports.testBoardWin = async (player, boardState, lastMoveAddress) => {
     // Retrieve all data needed
     const completedMasks = completedBoardMasks.data.completedBoardMasks;
     const boardPlayed = parseInt(Math.floor(lastMoveAddress/9));
