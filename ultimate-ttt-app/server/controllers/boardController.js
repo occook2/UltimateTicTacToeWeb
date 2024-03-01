@@ -12,7 +12,7 @@ exports.handleMove = async (req, res) => {
         var updatedBoardState = await updateBoardService.updateBoardState("X", boardState, nextMoveAddress);
         
         // Test for completed boards
-        updatedBoardState = await completedBoardService.testComplete("X", updatedBoardState, nextMoveAddress);
+        updatedBoardState = await completedBoardService.testBoardWin("X", updatedBoardState, nextMoveAddress);
         
         // Determine which board can be played in next
         updatedBoardState = await nextBoardService.setNextBoard(updatedBoardState, nextMoveAddress);
@@ -27,7 +27,7 @@ exports.handleMove = async (req, res) => {
         updatedBoardState = await updateBoardService.updateBoardState("O", boardState, botMove);
 
         // Test complete again for O
-        updatedBoardState = await completedBoardService.testComplete("O", updatedBoardState, botMove);
+        updatedBoardState = await completedBoardService.testBoardWin("O", updatedBoardState, botMove);
 
         // Determine next board to play after bot makes move
         updatedBoardState = await nextBoardService.setNextBoard(updatedBoardState, botMove);

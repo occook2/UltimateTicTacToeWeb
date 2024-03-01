@@ -1,17 +1,22 @@
 import React from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import './App.css';
-import BigBoard from './components/BigBoard';
+import LandingPage from './pages/LandingPage';
+import GamePage from './pages/GamePage';
 
 function App() {
   return (
-    <div className="app">
-      <div className="center-container">
-        <h1 className="title">Ultimate Tic-Tac-Toe</h1> {/* Updated title */}
-          <BigBoard />
+    <Router>
+      <div className="app">
+        <Routes>
+          <Route path="/" element={<LandingPage />} />
+          <Route path="/game" element={<GamePage />} />
+        </Routes>
       </div>
-    </div>
+    </Router>
   );
 }
 
 export default App;
+
 
