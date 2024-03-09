@@ -1,0 +1,18 @@
+/* EndGameMessage.css */
+
+.end-game-message {
+    display: block;
+    opacity: 1;
+    position: absolute; /* Change position to absolute */
+    top: 50%; /* Position it in the center vertically */
+    left: 50%; /* Position it in the center horizontally */
+    transform: translate(-50%, -50%);
+    background-color: rgba(255, 255, 255, 0.9); /* Set background color with reduced opacity */
+    padding: 60px; /* Increase padding to make the box bigger */
+    font-size: 24px; /* Increase font size */
+    border-radius: 20px; /* Set border radius */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: opacity 0.5s ease;
+    z-index: 1000; /* Ensure it appears above other elements */
+  }
+  

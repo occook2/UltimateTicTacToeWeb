@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './Square.css'; // Import the CSS file
 
-function Square({ address, value, possibleMove, onSquareClick}) {
+function Square({ address, value, possibleMove, gameProgress, onSquareClick}) {
     const handleClick = () => {     
         // Call the onSquareClick function passed from the parent component
         onSquareClick(address); // Address will be sent to Server. JSON response will go to BigBoard
@@ -14,7 +14,7 @@ function Square({ address, value, possibleMove, onSquareClick}) {
     }
     
     // Determines which squares shoul have buttons
-    if (possibleMove && !filled) {
+    if (possibleMove && !filled && gameProgress == "Incomplete") {
       return (
         <div className='square'>
           <button className="square-button" onClick={handleClick}>
