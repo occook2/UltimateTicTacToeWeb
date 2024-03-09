@@ -2,10 +2,10 @@ import React from 'react';
 import './Board.css'; // Import the CSS file
 import Square from './Square';
 
-function Board({ boardNumber, boardData, boardMove, complete, onSquareClick}) {
+function Board({ boardNumber, boardData, boardMove, complete, gameProgress, onSquareClick}) {
   // Helper function to render a single square
   const renderSquare = (i, val) => {
-    return <Square key = {i} address = {i} value = {val} possibleMove = {boardMove} onSquareClick={onSquareClick}/>;
+    return <Square key = {i} address = {i} value = {val} possibleMove = {boardMove} gameProgress = {gameProgress} onSquareClick={onSquareClick}/>;
   };
 
   // Helper function to render a row of squares
@@ -41,7 +41,7 @@ function Board({ boardNumber, boardData, boardMove, complete, onSquareClick}) {
       </div>
     );
   }
-  else if (boardMove) {
+  else if (boardMove || gameProgress != "Incomplete") {
     return (
       <div className='board-container open'>
         {renderBoard()}

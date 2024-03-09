@@ -13,5 +13,7 @@
 
     "boardMove": [-1],
 
-    "completeBoards": ["","","","","","","","",""]
+    "completeBoards": ["","","","","","","","",""],
+
+    "gameProgress" : "Incomplete"
   }

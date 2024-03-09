@@ -4,7 +4,7 @@ import emptyBoardState from '../mock-data/emptyBoardState.json'
 import Board from './Board'
 import axios from 'axios'
 
-function BigBoard() {
+function BigBoard({ handleGameComplete }) {
   
   // ### Code to update BigBoard at start and on Click ###
   // Sets start to emptyBoardState and tracks state of BigBoard throughout game
@@ -27,20 +27,26 @@ function BigBoard() {
       const response = await axios.post('http://localhost:4000/move', postData);
       // Update the bigBoardState based on the response from the server
       setBigBoardState(response.data.updatedBoardState);
+
+      // Test Game End
+      if (response.data.updatedBoardState.gameProgress != "Incomplete") {
+        handleGameComplete(response.data.updatedBoardState.gameProgress);
+      }
     } catch (error) {
       console.error(error);
     }
+    
   };
   
    // ### Helper Functions to Render BigBoard ###
 
    // Helper function to render a single board    
-   const renderBoard = (i, data, boardMove, complete) => {
-    if (i == boardMove || boardMove == -1) {
-      return <Board key = {i} boardNumber = {i} boardData = {data} boardMove = {true} complete = {complete} onSquareClick={handleSquareClick}/>;
+   const renderBoard = (i, data, boardMove, complete, gameProgress) => {
+    if (gameProgress != "Incomplete" || i == boardMove || boardMove == -1) {
+      return <Board key = {i} boardNumber = {i} boardData = {data} boardMove = {true} complete = {complete} gameProgress = {gameProgress} onSquareClick={handleSquareClick}/>;
     }
     else {
-      return <Board key = {i} boardNumber = {i} boardData = {data} boardMove = {false} complete = {complete} onSquareClick={handleSquareClick}/>;
+      return <Board key = {i} boardNumber = {i} boardData = {data} boardMove = {false} complete = {complete} gameProgress = {gameProgress} onSquareClick={handleSquareClick}/>;
     } 
   };
 
@@ -52,7 +58,8 @@ function BigBoard() {
       boards.push(renderBoard(boardKey, 
         boardState.bigBoard[boardKey], 
         boardState.boardMove, 
-        boardState.completeBoards[boardKey]));
+        boardState.completeBoards[boardKey],
+        boardState.gameProgress));
     }
     
     return (
