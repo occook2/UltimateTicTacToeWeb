@@ -29,40 +29,4 @@
     height: 100%;
   }
 
-  /* Rules Box */
-.rules-box {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: #f5f5f5;
-  border: none;
-  border: 2px solid #444;
-  border-radius: 5px; /* Rounded corners */
-  padding: 0; /* Removed padding */
-  z-index: 1000;
-  max-height: 60%; /* Set maximum height */
-  overflow-y: auto; /* Enable vertical scrolling */
-  overflow-x: hidden; /* Disable horizontal scrolling */
-}
-
-/* Rules Header */
-.rules-header {
-  position: sticky;
-  top: 0;
-  background-color: #f5f5f5;
-  padding: 10px 20px;
-  border-radius: 5px 5px 0 0; /* Rounded top corners */
-  border-bottom: 1px dashed #444; /* Dashed border */
-  z-index: 1001; /* Ensure it's above the rules content */
-  width: calc(100% - 4px); /* Adjust width to account for border */
-}
-
-/* Close Button */
-.close {
-  position: absolute;
-  top: 10px;
-  right: 50px;
-  cursor: pointer;
-  z-index: 1002; /* Ensure it's above the rules content */
-}
+  
