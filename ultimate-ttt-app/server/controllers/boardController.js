@@ -3,6 +3,7 @@ const completedBoardService = require('../services/testBoardWin.js');
 const completedGameService = require('../services/testGameEnd.js');
 const nextBoardService = require('../services/nextBoard.js');
 const agentService = require('../agents/randomAgent.js');
+const mockInsert = require('../models/mock.js');
 
 exports.handleMove = async (req, res) => {
     try {
@@ -40,6 +41,8 @@ exports.handleMove = async (req, res) => {
             // Determine next board to play after bot makes move
             updatedBoardState = await nextBoardService.setNextBoard(updatedBoardState, botMove);
 
+            mockInsert.insertMockData();
+            
             // Send back the updated board state in the response
             res.status(200).json({ updatedBoardState });
         }
