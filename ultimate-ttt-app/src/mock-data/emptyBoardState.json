@@ -15,5 +15,7 @@
 
     "completeBoards": ["","","","","","","","",""],
 
-    "gameProgress" : "Incomplete"
+    "gameProgress" : "Incomplete",
+
+    "player" : ""
   }
