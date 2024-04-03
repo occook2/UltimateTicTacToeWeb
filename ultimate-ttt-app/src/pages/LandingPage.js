@@ -22,6 +22,7 @@ function LandingPage() {
 
   const handleSymbolSelection = (symbol) => {
     setSelectedSymbol(symbol);
+    localStorage.setItem('selectedSymbol', symbol);  // Store selected symbol in localStorage
     toggleSymbolSelection(); // Close the symbol selection box
     // Proceed with starting the game, passing the selected symbol
   };

@@ -6,16 +6,16 @@ const agentService = require('../agents/randomAgent.js');
 
 exports.handleMove = async (req, res) => {
     try {
-        const { boardState, nextMoveAddress } = req.body;
-        
+        const { boardState, nextMoveAddress, player, bot } = req.body;
+        console.log("Player Symbol is: " + player);
         // Update the board state after player move
-        var updatedBoardState = await updateBoardService.updateBoardState("X", boardState, nextMoveAddress);
+        var updatedBoardState = await updateBoardService.updateBoardState(player, boardState, nextMoveAddress);
         
         // Test for completed boards
-        updatedBoardState = await completedBoardService.testBoardWin("X", updatedBoardState, nextMoveAddress);
+        updatedBoardState = await completedBoardService.testBoardWin(player, updatedBoardState, nextMoveAddress);
         
         // Determine if a game has ended and if so, initiate end sequence
-        updatedBoardState = await completedGameService.testGameWin("X", updatedBoardState);
+        updatedBoardState = await completedGameService.testGameWin(player, updatedBoardState);
         
         // Determine which board can be played in next
         updatedBoardState = await nextBoardService.setNextBoard(updatedBoardState, nextMoveAddress);
@@ -29,13 +29,13 @@ exports.handleMove = async (req, res) => {
             const botMove = await agentService.selectRandomMove(updatedBoardState);
             
             // Make move for random Bot
-            updatedBoardState = await updateBoardService.updateBoardState("O", boardState, botMove);
+            updatedBoardState = await updateBoardService.updateBoardState(bot, boardState, botMove);
 
             // Test complete again for O
-            updatedBoardState = await completedBoardService.testBoardWin("O", updatedBoardState, botMove);
+            updatedBoardState = await completedBoardService.testBoardWin(bot, updatedBoardState, botMove);
             
             // Determine if a game has ended and if so, initiate end sequence
-            updatedBoardState = await completedGameService.testGameWin("O", updatedBoardState);
+            updatedBoardState = await completedGameService.testGameWin(bot, updatedBoardState);
 
             // Determine next board to play after bot makes move
             updatedBoardState = await nextBoardService.setNextBoard(updatedBoardState, botMove);

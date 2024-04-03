@@ -4,7 +4,7 @@ import emptyBoardState from '../mock-data/emptyBoardState.json'
 import Board from './Board'
 import axios from 'axios'
 
-function BigBoard({ handleGameComplete }) {
+function BigBoard({ handleGameComplete, playerSymbol, botSymbol}) {
   
   // ### Code to update BigBoard at start and on Click ###
   // Sets start to emptyBoardState and tracks state of BigBoard throughout game
@@ -19,7 +19,9 @@ function BigBoard({ handleGameComplete }) {
     // Create data for Post Request
     const postData = {
       boardState: bigBoardState,
-      nextMoveAddress: address
+      nextMoveAddress: address,
+      player: playerSymbol,
+      bot: botSymbol
     };
 
     // API Post Request
