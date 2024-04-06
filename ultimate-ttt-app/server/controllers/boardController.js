@@ -18,7 +18,7 @@ exports.handleMove = async (req, res) => {
 
             updatedBoardState = await completedBoardService.testBoardWin(botSymbol, updatedBoardState, botMove);
 
-            updatedBoardState = await completedGameService.testGameWin(botSymbol, updatedBoardState);
+            updatedBoardState = await completedGameService.testGameWin(botSymbol, updatedBoardState, false);
 
             updatedBoardState = await nextBoardService.setNextBoard(updatedBoardState, botMove);
 
@@ -33,7 +33,7 @@ exports.handleMove = async (req, res) => {
         updatedBoardState = await completedBoardService.testBoardWin(playerSymbol, updatedBoardState, nextMoveAddress);
         
         // Determine if a game has ended and if so, initiate end sequence
-        updatedBoardState = await completedGameService.testGameWin(playerSymbol, updatedBoardState);
+        updatedBoardState = await completedGameService.testGameWin(playerSymbol, updatedBoardState, true);
         
         // Determine which board can be played in next
         updatedBoardState = await nextBoardService.setNextBoard(updatedBoardState, nextMoveAddress);
@@ -54,7 +54,7 @@ exports.handleMove = async (req, res) => {
         updatedBoardState = await completedBoardService.testBoardWin(botSymbol, updatedBoardState, botMove);
         
         // Determine if a game has ended and if so, initiate end sequence
-        updatedBoardState = await completedGameService.testGameWin(botSymbol, updatedBoardState);
+        updatedBoardState = await completedGameService.testGameWin(botSymbol, updatedBoardState, false);
 
         // Determine next board to play after bot makes move
         updatedBoardState = await nextBoardService.setNextBoard(updatedBoardState, botMove);
