@@ -1,6 +1,6 @@
 const completedBoardMasks = require('../utils/completedBoardMasks.js');
 
-exports.testGameWin = async (player, boardState) => {
+exports.testGameWin = async (player, boardState, isPlayer) => {
     var gameWon = false;
     var gameTie = false;
 
@@ -20,7 +20,7 @@ exports.testGameWin = async (player, boardState) => {
     }
 
     if (gameWon) {
-        if (player == "X") {
+        if (isPlayer) {
             boardState.gameProgress = "win";
         }
         else {

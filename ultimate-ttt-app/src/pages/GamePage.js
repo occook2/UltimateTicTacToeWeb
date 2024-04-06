@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import BigBoard from '../components/BigBoard';
 import EndGameMessage from '../components/EndGameMessage';
 import RulesBox from '../components/RulesBox.js';
@@ -9,6 +9,18 @@ function GamePage() {
   const [gameEnd, setGameEnd] = useState(false); 
   const [gameOutcome, setGameOutcome] = useState("");
   const [showRules, setShowRules] = useState(false);
+  const [playerSymbol, setPlayerSymbol] = useState('');
+  const [botSymbol, setBotSymbol] = useState('');
+
+  useEffect(() => {
+    // Set player's symbol based on selection from localStorage
+    const selectedSymbol = localStorage.getItem('selectedSymbol');
+    setPlayerSymbol(selectedSymbol);
+
+    // Set bot's symbol
+    const botSymbol = selectedSymbol == "X" ? "O" : "X";
+    setBotSymbol(botSymbol);
+  }, []);
 
   const handleGameEnd = (endOutcome) => {
     setGameEnd(true);
@@ -23,7 +35,10 @@ function GamePage() {
     <div className="game-page-container">
       <div className="center-container">
         <h1 className="title">Ultimate Tic-Tac-Toe</h1>
-        <BigBoard handleGameComplete={handleGameEnd}/>
+        <BigBoard 
+          handleGameComplete={handleGameEnd}
+          playerSymbol={playerSymbol}
+          botSymbol={botSymbol}/>
       </div>
       <div className="button-container">
         <Link to="/">
