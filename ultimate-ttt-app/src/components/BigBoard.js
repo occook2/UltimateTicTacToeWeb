@@ -28,7 +28,7 @@ function BigBoard({ handleGameComplete }) {
         };
 
         try {
-          const response = await axios.post('http://localhost:4000/move', postData);
+          const response = await axios.post('/move', postData);
           setBigBoardState(response.data.updatedBoardState);
         } catch (error) {
           console.error(error);
@@ -51,7 +51,7 @@ function BigBoard({ handleGameComplete }) {
     };
 
     try {
-      const response = await axios.post('http://localhost:4000/move', postData);
+      const response = await axios.post('/move', postData);
       setBigBoardState(response.data.updatedBoardState);
 
       if (response.data.updatedBoardState.gameProgress !== "Incomplete") {
